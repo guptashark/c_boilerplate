@@ -9,14 +9,20 @@ int main(void) {
 	print_data();
 
 	int * x = ag_malloc(sizeof(int));
+	* x = 8;
 
-	* x = 512;
+	int * y = ag_malloc(sizeof(int));
+	* y = 5;
 
-	if ( x == NULL ) {
-		printf("ag_malloc returned NULL\n");
-	} else {
-		printf("ag_malloc returned %p\n", x);
-	}
+
+	printf("after 2 allocs\n");
+	print_data();
+	ag_free( x );
+
+	int * z = ag_malloc(sizeof(int));
+	* z = 3;
+
+	printf("after a free and another alloc\n");
 
 	print_data();
 

@@ -29,6 +29,17 @@ void * ag_malloc ( size_t num_bytes ) {
 	return NULL;
 }
 
+void ag_free ( void * p ) {
+
+	// very inefficient, but it works.
+	for ( int i = 0; i < 64; i++ ) {
+		if ( p == & storage[i] ) {
+			// no need to clear the spot.
+			alloc.markers[i] = 0;
+		}
+	}
+}
+
 void print_data(void) {
 
 	for(int i = 0; i < 64; i++) {
