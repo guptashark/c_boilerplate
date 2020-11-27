@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <stdint.h>
 
-static uint32_t storage[64];
+#define NUM_STORED_INTS 4
+
+static uint32_t storage[NUM_STORED_INTS];
 
 struct allocator {
 
 	// data structure that keeps track of allocations.
-	uint8_t markers[64];
+	uint8_t markers[NUM_STORED_INTS];
 };
 
 static struct allocator alloc;
@@ -18,7 +20,7 @@ void * ag_malloc ( size_t num_bytes ) {
 		return NULL;
 	}
 
-	for ( int i = 0; i < 64; i++) {
+	for ( int i = 0; i < NUM_STORED_INTS; i++) {
 		if ( alloc.markers[i] == 0 ) {
 			alloc.markers[i] = '1';
 			return  & storage[i];
@@ -32,7 +34,7 @@ void * ag_malloc ( size_t num_bytes ) {
 void ag_free ( void * p ) {
 
 	// very inefficient, but it works.
-	for ( int i = 0; i < 64; i++ ) {
+	for ( int i = 0; i < NUM_STORED_INTS; i++ ) {
 		if ( p == & storage[i] ) {
 			// no need to clear the spot.
 			alloc.markers[i] = 0;
@@ -42,7 +44,7 @@ void ag_free ( void * p ) {
 
 void print_data(void) {
 
-	for(int i = 0; i < 64; i++) {
+	for(int i = 0; i < NUM_STORED_INTS; i++) {
 		printf("%d", storage[i]);
 	}
 
