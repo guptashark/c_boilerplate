@@ -11,6 +11,9 @@ struct logger main_lg;
 // test the is_sorted fn.
 void test_is_sorted ( void );
 
+// test the is_heap fn.
+void test_is_heap ( void );
+
 int main(void) {
 
 	printf("Heapsort Logger Demo\n");
@@ -22,6 +25,7 @@ int main(void) {
 	logger_trace_begin ( & main_lg );
 
 	test_is_sorted();
+	test_is_heap();
 
 	logger_trace_end ( & main_lg );
 
@@ -41,6 +45,23 @@ void test_is_sorted ( void ) {
 
 		assert ( is_sorted ( arr_01, arr_len ) );
 		assert ( is_sorted ( arr_02, arr_len ) );
+	}
+
+	logger_trace_end ( & main_lg );
+}
+
+void test_is_heap ( void ) {
+
+	logger_set_fn_name ( & main_lg, "test_is_heap" );
+	logger_trace_begin ( & main_lg );
+
+	{
+		const int arr_len = 5;
+		int arr_01[5] = { 1, 2, 3, 4, 5 };
+		int arr_02[5] = { 1, 5, 7, 6, 4 };
+
+		assert ( is_heap ( arr_01, arr_len ) );
+		assert ( is_heap ( arr_02, arr_len ) == false );
 	}
 
 	logger_trace_end ( & main_lg );

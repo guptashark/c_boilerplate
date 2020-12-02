@@ -7,4 +7,6 @@ void heapsort_module_init ( void );
 
 bool is_sorted ( int * arr, int n );
 
+bool is_heap ( int * arr, int n );
+
 #endif
