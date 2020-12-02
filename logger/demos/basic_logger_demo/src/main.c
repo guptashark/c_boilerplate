@@ -28,6 +28,8 @@ int main(void) {
 		logger_trace_end ( & main_lg );
 	}
 
+	logger_trace_error ( & main_lg, "sample error mesage" );
+
 	logger_trace_end ( & main_lg );
 
 	return 0;

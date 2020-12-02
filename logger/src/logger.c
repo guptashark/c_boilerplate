@@ -53,3 +53,13 @@ logger_trace_end
 
 	lg->stack_size--;
 }
+
+void
+logger_trace_error
+( struct logger * lg, const char * err ) {
+	printf ( "[ERROR]" );
+	printf ( "[%s]", lg->filename );
+	printf ( "[%s]", lg->fn_name_stack[lg->stack_size - 1] );
+
+	printf ( ": %s\n", err );
+}

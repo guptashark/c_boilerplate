@@ -31,4 +31,8 @@ void
 logger_trace_end
 ( struct logger * lg );
 
+void
+logger_trace_error
+( struct logger * lg, const char * err );
+
 #endif
