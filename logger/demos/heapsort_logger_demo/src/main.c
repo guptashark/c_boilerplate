@@ -1,18 +1,47 @@
 #include <stdio.h>
+#include <assert.h>
+
+#include "heapsort.h"
 
 #include "logger.h"
+
+
+struct logger main_lg;
+
+// test the is_sorted fn.
+void test_is_sorted ( void );
 
 int main(void) {
 
 	printf("Heapsort Logger Demo\n");
 
-	struct logger main_lg;
 	logger_init ( & main_lg, stdout, "main.c" );
+	heapsort_module_init();
 
 	logger_set_fn_name ( & main_lg, "main" );
 	logger_trace_begin ( & main_lg );
 
+	test_is_sorted();
+
 	logger_trace_end ( & main_lg );
 
 	return 0;
+}
+
+
+void test_is_sorted ( void ) {
+
+	logger_set_fn_name ( & main_lg, "test_is_sorted" );
+	logger_trace_begin ( & main_lg );
+
+	{
+		const int arr_len = 5;
+		int arr_01[5] = { 1, 2, 3, 4, 5 };
+		int arr_02[5] = { 1, 2, 3, 3, 4 };
+
+		assert ( is_sorted ( arr_01, arr_len ) );
+		assert ( is_sorted ( arr_02, arr_len ) );
+	}
+
+	logger_trace_end ( & main_lg );
 }
