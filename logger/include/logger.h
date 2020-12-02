@@ -6,6 +6,8 @@
 
 struct logger {
 
+	FILE * output_file;
+
 	char filename[64];
 
 	uint32_t stack_size;
@@ -14,7 +16,7 @@ struct logger {
 
 void
 logger_init
-( struct logger * lg, const char * filename );
+( struct logger * lg, FILE * output_file, const char * filename );
 
 void
 logger_trace

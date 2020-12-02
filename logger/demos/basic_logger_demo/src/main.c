@@ -6,8 +6,10 @@ int main(void) {
 
 	printf("Basic Logger Demo\n");
 
+	FILE * f = fopen ( "output.txt", "w" );
+
 	struct logger main_lg;
-	logger_init ( & main_lg, "main.c" );
+	logger_init ( & main_lg, f, "main.c" );
 
 	logger_set_fn_name ( & main_lg, "main" );
 	logger_trace_begin ( & main_lg );

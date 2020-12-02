@@ -19,7 +19,8 @@ static const char *log_type_str_vals [4] = {
 
 void
 logger_init
-( struct logger * lg, const char * filename ) {
+( struct logger * lg, FILE * output_file, const char * filename ) {
+	lg->output_file = output_file;
 	strcpy ( lg->filename, filename );
 
 	lg->stack_size = 0;
@@ -29,23 +30,25 @@ static
 void
 logger_print_helper
 ( struct logger * lg, enum log_type t ) {
-	printf ( "[%s]", log_type_str_vals[t] );
-	printf ( "[%s]", lg->filename );
-	printf ( "[%s]", lg->fn_name_stack[lg->stack_size - 1] );
+	FILE * f = lg->output_file;
+	fprintf ( f, "[%s]", log_type_str_vals[t] );
+	fprintf ( f, "[%s]", lg->filename );
+	fprintf ( f, "[%s]", lg->fn_name_stack[lg->stack_size - 1] );
 }
 
 void
 logger_trace
 ( struct logger * lg, const char * fmt_msg, ... ) {
 	logger_print_helper ( lg, TRACE );
-	printf(": ");
+
+	fprintf( lg->output_file, ": ");
 
 	va_list args;
 	va_start ( args, fmt_msg );
-
-	vprintf ( fmt_msg, args );
+	vfprintf ( lg->output_file, fmt_msg, args );
 	va_end ( args );
-	printf("\n");
+
+	fprintf( lg->output_file, "\n");
 }
 
 void
@@ -65,14 +68,14 @@ void
 logger_trace_begin
 ( struct logger * lg ) {
 	logger_print_helper ( lg, TRACE );
-	printf ( "[BEGIN]\n" );
+	fprintf ( lg->output_file, "[BEGIN]\n" );
 }
 
 void
 logger_trace_end
 ( struct logger * lg ) {
 	logger_print_helper ( lg, TRACE );
-	printf ( "[END]\n" );
+	fprintf ( lg->output_file, "[END]\n" );
 
 	lg->stack_size--;
 }
@@ -81,14 +84,12 @@ void
 logger_trace_error
 ( struct logger * lg, const char * fmt_err, ... ) {
 	logger_print_helper ( lg, ERROR );
-	printf ( ": " );
+	fprintf ( lg->output_file, ": " );
 
 	va_list args;
 	va_start ( args, fmt_err );
-
-	vprintf ( fmt_err, args );
-
+	vfprintf ( lg->output_file, fmt_err, args );
 	va_end ( args );
 
-	printf("\n");
+	fprintf( lg->output_file, "\n");
 }
