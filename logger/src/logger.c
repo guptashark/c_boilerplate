@@ -11,12 +11,19 @@ logger_init
 	lg->stack_size = 0;
 }
 
+static
+void
+logger_print_helper
+( struct logger * lg ) {
+	printf ( "[TRACE]" );
+	printf ( "[%s]", lg->filename );
+	printf ( "[%s]", lg->fn_name_stack[lg->stack_size - 1] );
+}
+
 void
 logger_trace
 ( struct logger * lg, const char * fmt_msg, ... ) {
-	printf("[TRACE]");
-	printf("[%s]", lg->filename);
-	printf("[%s]", lg->fn_name_stack[lg->stack_size - 1]);
+	logger_print_helper ( lg );
 	printf(": ");
 
 	va_list args;
@@ -43,18 +50,14 @@ logger_set_fn_name
 void
 logger_trace_begin
 ( struct logger * lg ) {
-	printf ( "[TRACE]" );
-	printf ( "[%s]", lg->filename );
-	printf ( "[%s]", lg->fn_name_stack[lg->stack_size - 1] );
+	logger_print_helper ( lg );
 	printf ( "[BEGIN]\n" );
 }
 
 void
 logger_trace_end
 ( struct logger * lg ) {
-	printf ( "[TRACE]" );
-	printf ( "[%s]", lg->filename );
-	printf ( "[%s]", lg->fn_name_stack[lg->stack_size - 1] );
+	logger_print_helper ( lg );
 	printf ( "[END]\n" );
 
 	lg->stack_size--;
