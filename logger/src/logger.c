@@ -13,12 +13,18 @@ logger_init
 
 void
 logger_trace
-( struct logger * lg, const char * msg ) {
+( struct logger * lg, const char * fmt_msg, ... ) {
 	printf("[TRACE]");
 	printf("[%s]", lg->filename);
 	printf("[%s]", lg->fn_name_stack[lg->stack_size - 1]);
+	printf(": ");
 
-	printf(": %s\n", msg);
+	va_list args;
+	va_start ( args, fmt_msg );
+
+	vprintf ( fmt_msg, args );
+	va_end ( args );
+	printf("\n");
 }
 
 void
@@ -56,10 +62,18 @@ logger_trace_end
 
 void
 logger_trace_error
-( struct logger * lg, const char * err ) {
+( struct logger * lg, const char * fmt_err, ... ) {
 	printf ( "[ERROR]" );
 	printf ( "[%s]", lg->filename );
 	printf ( "[%s]", lg->fn_name_stack[lg->stack_size - 1] );
+	printf ( ": " );
 
-	printf ( ": %s\n", err );
+	va_list args;
+	va_start ( args, fmt_err );
+
+	vprintf ( fmt_err, args );
+
+	va_end ( args );
+
+	printf("\n");
 }

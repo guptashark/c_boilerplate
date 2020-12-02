@@ -2,6 +2,7 @@
 #define LOGGER_H
 
 #include <stdint.h>
+#include <stdarg.h>
 
 struct logger {
 
@@ -17,7 +18,7 @@ logger_init
 
 void
 logger_trace
-( struct logger * lg, const char * msg );
+( struct logger * lg, const char * fmt_msg, ... );
 
 void
 logger_set_fn_name
@@ -33,6 +34,6 @@ logger_trace_end
 
 void
 logger_trace_error
-( struct logger * lg, const char * err );
+( struct logger * lg, const char * fmt_err, ... );
 
 #endif
