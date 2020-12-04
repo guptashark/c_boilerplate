@@ -8,6 +8,7 @@ static struct logger hp_log;
 
 void heapsort_module_init ( void ) {
 	logger_init ( & hp_log, stdout, "heapsort.c" );
+	logger_blacklist_fn ( & hp_log, "parent" );
 }
 
 bool is_sorted ( int * arr, int n ) {

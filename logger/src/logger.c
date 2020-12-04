@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 #include "logger.h"
 
@@ -24,21 +25,53 @@ logger_init
 	strcpy ( lg->filename, filename );
 
 	lg->stack_size = 0;
+	lg->num_blacklisted = 0;
+}
+
+static
+bool
+fn_is_blacklisted
+( struct logger * lg, const char * fn_name ) {
+
+	if ( lg->num_blacklisted == 0 ) {
+		return false;
+	}
+
+	for ( uint32_t i = 0; i < lg->num_blacklisted; i++ ) {
+		if ( strcmp ( fn_name, lg->blacklist[i] ) == 0 ) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 static
 void
 logger_print_helper
 ( struct logger * lg, enum log_type t ) {
-	FILE * f = lg->output_file;
-	fprintf ( f, "[%s]", log_type_str_vals[t] );
-	fprintf ( f, "[%s]", lg->filename );
-	fprintf ( f, "[%s]", lg->fn_name_stack[lg->stack_size - 1] );
+
+	char * fn_name = lg->fn_name_stack[lg->stack_size - 1];
+
+	if ( ! fn_is_blacklisted ( lg, fn_name) ) {
+
+		FILE * f = lg->output_file;
+		fprintf ( f, "[%s]", log_type_str_vals[t] );
+		fprintf ( f, "[%s]", lg->filename );
+		fprintf ( f, "[%s]", lg->fn_name_stack[lg->stack_size - 1] );
+	}
 }
 
 void
 logger_trace
 ( struct logger * lg, const char * fmt_msg, ... ) {
+
+	char * fn_name = lg->fn_name_stack[lg->stack_size - 1];
+
+	if ( fn_is_blacklisted ( lg, fn_name) ) {
+		return;
+	}
+
 	logger_print_helper ( lg, TRACE );
 
 	fprintf( lg->output_file, ": ");
@@ -67,6 +100,12 @@ logger_set_fn_name
 void
 logger_trace_begin
 ( struct logger * lg ) {
+
+	char * fn_name = lg->fn_name_stack[lg->stack_size - 1];
+	if ( fn_is_blacklisted ( lg, fn_name) ) {
+		return;
+	}
+
 	logger_print_helper ( lg, TRACE );
 	fprintf ( lg->output_file, "[BEGIN]\n" );
 }
@@ -74,6 +113,12 @@ logger_trace_begin
 void
 logger_trace_end
 ( struct logger * lg ) {
+
+	char * fn_name = lg->fn_name_stack[lg->stack_size - 1];
+	if ( fn_is_blacklisted ( lg, fn_name) ) {
+		return;
+	}
+
 	logger_print_helper ( lg, TRACE );
 	fprintf ( lg->output_file, "[END]\n" );
 
@@ -92,4 +137,17 @@ logger_trace_error
 	va_end ( args );
 
 	fprintf( lg->output_file, "\n");
+}
+
+void
+logger_blacklist_fn
+( struct logger * lg, const char * fn_name ) {
+
+	if ( lg->num_blacklisted == 16 ) {
+		printf("reached blacklist capacity!\n");
+		return;
+	}
+
+	strcpy ( lg->blacklist[lg->num_blacklisted], fn_name );
+	lg->num_blacklisted++;
 }

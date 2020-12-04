@@ -12,6 +12,9 @@ struct logger {
 
 	uint32_t stack_size;
 	char fn_name_stack[16][32];
+
+	uint32_t num_blacklisted;
+	char blacklist[16][32];
 };
 
 void
@@ -37,5 +40,9 @@ logger_trace_end
 void
 logger_trace_error
 ( struct logger * lg, const char * fmt_err, ... );
+
+void
+logger_blacklist_fn
+( struct logger * lg, const char * fn_name );
 
 #endif
