@@ -116,6 +116,7 @@ logger_trace_end
 
 	char * fn_name = lg->fn_name_stack[lg->stack_size - 1];
 	if ( fn_is_blacklisted ( lg, fn_name) ) {
+		lg->stack_size--;
 		return;
 	}
 
