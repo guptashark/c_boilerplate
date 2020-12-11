@@ -18,6 +18,10 @@ void
 vector_ctor
 ( struct vector * v );
 
+void
+vector_dtor
+( struct vector * v );
+
 // Element Access fns.
 
 // if i is less than size, (a valid index) then return the element at i.
@@ -66,9 +70,5 @@ vector_push_back
 void
 vector_pop_back
 (struct vector * v );
-
-void
-vector_dtor
-( struct vector * v );
 
 #endif

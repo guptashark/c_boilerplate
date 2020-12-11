@@ -12,6 +12,12 @@ vector_ctor
 	v->arr = malloc ( sizeof ( void * ) * v->capacity );
 }
 
+void
+vector_dtor
+( struct vector * v ) {
+	free ( v->arr );
+}
+
 void *
 vector_at
 ( struct vector * v, size_t i ) {
@@ -89,10 +95,4 @@ vector_pop_back
 	if ( v->size > 0 ) {
 		v->size--;
 	}
-}
-
-void
-vector_dtor
-( struct vector * v ) {
-	free ( v->arr );
 }
