@@ -17,6 +17,10 @@ vector_ctor
 ( struct vector * v );
 
 void
+vector_push_back
+( struct vector * v, void * obj );
+
+void
 vector_dtor
 ( struct vector * v );
 
