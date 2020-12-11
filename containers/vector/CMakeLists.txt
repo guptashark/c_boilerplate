@@ -22,3 +22,9 @@ target_include_directories ( test_init PUBLIC include )
 target_link_libraries ( test_init ${this_project} )
 
 add_test ( test_init test_init )
+
+add_executable ( test_push_back tests/test_push_back.c )
+target_include_directories ( test_push_back PUBLIC include )
+target_link_libraries ( test_push_back ${this_project} )
+
+add_test ( test_push_back test_push_back )
