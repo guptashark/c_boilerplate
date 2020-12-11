@@ -12,20 +12,6 @@ vector_ctor
 	v->arr = malloc ( sizeof ( void * ) * v->capacity );
 }
 
-void
-vector_push_back
-( struct vector * v, void * obj ) {
-
-	if ( v->size == v->capacity ) {
-		v->capacity = v->capacity * 2;
-	}
-
-	v->arr = realloc ( v->arr, sizeof ( void * ) * v->capacity );
-
-	v->arr[v->size] = obj;
-	v->size++;
-}
-
 void *
 vector_at
 ( struct vector * v, size_t i ) {
@@ -80,6 +66,20 @@ void
 vector_clear
 ( struct vector * v ) {
 	v->size = 0;
+}
+
+void
+vector_push_back
+( struct vector * v, void * obj ) {
+
+	if ( v->size == v->capacity ) {
+		v->capacity = v->capacity * 2;
+	}
+
+	v->arr = realloc ( v->arr, sizeof ( void * ) * v->capacity );
+
+	v->arr[v->size] = obj;
+	v->size++;
 }
 
 void
