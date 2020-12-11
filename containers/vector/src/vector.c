@@ -23,6 +23,7 @@ vector_push_back
 	v->arr = realloc ( v->arr, sizeof ( void * ) * v->capacity );
 
 	v->arr[v->size] = obj;
+	v->size++;
 }
 
 void
