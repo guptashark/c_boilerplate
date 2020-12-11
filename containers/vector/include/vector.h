@@ -2,6 +2,7 @@
 #define VECTOR_H
 
 #include <stdint.h>
+#include <stddef.h>
 
 struct vector {
 
@@ -19,6 +20,14 @@ vector_ctor
 void
 vector_push_back
 ( struct vector * v, void * obj );
+
+// Element Access fns.
+
+// if i is less than size, (a valid index) then return the element at i.
+// Otherwise, return NULL.
+void *
+vector_at
+( struct vector * v, size_t i );
 
 void
 vector_dtor

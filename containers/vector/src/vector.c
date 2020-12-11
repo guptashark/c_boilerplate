@@ -26,6 +26,16 @@ vector_push_back
 	v->size++;
 }
 
+void *
+vector_at
+( struct vector * v, size_t i ) {
+	if ( i >= v->size ) {
+		return NULL;
+	}
+
+	return v->arr[i];
+}
+
 void
 vector_dtor
 ( struct vector * v ) {
