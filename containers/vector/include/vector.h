@@ -54,6 +54,15 @@ size_t
 vector_capacity
 ( struct vector * v );
 
+// Modifiers
+
+// Clears the vector, but doesn't resize it, (no capacity change).
+// The vector's size is set to 0.
+// Array is now empty.
+void
+vector_clear
+( struct vector * v );
+
 void
 vector_dtor
 ( struct vector * v );

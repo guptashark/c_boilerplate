@@ -77,6 +77,12 @@ vector_capacity
 }
 
 void
+vector_clear
+( struct vector * v ) {
+	v->size = 0;
+}
+
+void
 vector_dtor
 ( struct vector * v ) {
 	free ( v->arr );
