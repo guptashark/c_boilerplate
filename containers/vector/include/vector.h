@@ -29,6 +29,16 @@ void *
 vector_at
 ( struct vector * v, size_t i );
 
+// if the vector has size 0, will return NULL.
+void *
+vector_front
+( struct vector * v );
+
+// if the vector has size 0, will return NULL.
+void *
+vector_back
+( struct vector * v );
+
 void
 vector_dtor
 ( struct vector * v );

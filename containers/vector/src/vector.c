@@ -36,6 +36,28 @@ vector_at
 	return v->arr[i];
 }
 
+void *
+vector_front
+( struct vector * v ) {
+
+	if ( v->size == 0 ) {
+		return NULL;
+	}
+
+	return v->arr[0];
+}
+
+void *
+vector_back
+( struct vector * v ) {
+
+	if ( v->size == 0 ) {
+		return NULL;
+	}
+
+	return v->arr[v->size - 1];
+}
+
 void
 vector_dtor
 ( struct vector * v ) {
