@@ -88,6 +88,25 @@ vector_capacity
 }
 
 void
+vector_shrink_to_fit
+( struct vector * v ) {
+
+	// if 0 is given to realloc, it is implementation defined.
+	// Instead, we can free the array and set both size and
+	// capacity to zero.
+	if ( v->size == 0 ) {
+		free ( v->arr );
+		v->capacity = 0;
+	} else {
+		void ** new_arr = realloc ( v->arr, v->size );
+		if ( new_arr != NULL ) {
+			v->arr = new_arr;
+			v->capacity = v->size;
+		}
+	}
+}
+
+void
 vector_clear
 ( struct vector * v ) {
 	v->size = 0;

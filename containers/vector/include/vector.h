@@ -66,6 +66,13 @@ size_t
 vector_capacity
 ( struct vector * v );
 
+// Will reduce the capacity to size. Ie, if the vector can hold
+// 10 elements, and it currently holds 5, then a shrink_to_fit will
+// reduce the capacity to 5.
+void
+vector_shrink_to_fit
+( struct vector * v );
+
 // Modifiers
 
 // Clears the vector, but doesn't resize it, (no capacity change).
