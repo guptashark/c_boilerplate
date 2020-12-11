@@ -58,6 +58,12 @@ vector_back
 	return v->arr[v->size - 1];
 }
 
+bool
+vector_empty
+( struct vector * v ) {
+	return v->size == 0;
+}
+
 size_t
 vector_size
 ( struct vector * v ) {

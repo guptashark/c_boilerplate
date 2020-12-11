@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include <stdbool.h>
 
 struct vector {
 
@@ -40,6 +41,10 @@ vector_back
 ( struct vector * v );
 
 // Capacity fns.
+
+bool
+vector_empty
+( struct vector * v );
 
 size_t
 vector_size
