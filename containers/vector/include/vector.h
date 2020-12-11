@@ -39,6 +39,12 @@ void *
 vector_back
 ( struct vector * v );
 
+// Capacity fns.
+
+size_t
+vector_size
+( struct vector * v );
+
 void
 vector_dtor
 ( struct vector * v );

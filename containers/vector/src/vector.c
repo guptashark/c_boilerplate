@@ -58,6 +58,12 @@ vector_back
 	return v->arr[v->size - 1];
 }
 
+size_t
+vector_size
+( struct vector * v ) {
+	return v->size;
+}
+
 void
 vector_dtor
 ( struct vector * v ) {
