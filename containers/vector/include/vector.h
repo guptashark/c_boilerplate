@@ -50,6 +50,10 @@ size_t
 vector_size
 ( struct vector * v );
 
+size_t
+vector_capacity
+( struct vector * v );
+
 void
 vector_dtor
 ( struct vector * v );

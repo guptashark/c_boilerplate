@@ -70,6 +70,12 @@ vector_size
 	return v->size;
 }
 
+size_t
+vector_capacity
+( struct vector * v ) {
+	return v->capacity;
+}
+
 void
 vector_dtor
 ( struct vector * v ) {
