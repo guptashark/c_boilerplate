@@ -83,6 +83,15 @@ vector_push_back
 }
 
 void
+vector_pop_back
+( struct vector * v ) {
+
+	if ( v->size > 0 ) {
+		v->size--;
+	}
+}
+
+void
 vector_dtor
 ( struct vector * v ) {
 	free ( v->arr );

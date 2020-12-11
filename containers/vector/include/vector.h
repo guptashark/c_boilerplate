@@ -64,6 +64,10 @@ vector_push_back
 ( struct vector * v, void * obj );
 
 void
+vector_pop_back
+(struct vector * v );
+
+void
 vector_dtor
 ( struct vector * v );
 
