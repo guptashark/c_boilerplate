@@ -62,6 +62,25 @@ vector_size
 	return v->size;
 }
 
+void
+vector_reserve
+( struct vector * v, size_t new_cap ) {
+
+	if ( v->capacity >= new_cap ) {
+		return;
+	}
+
+	void ** new_arr = realloc ( v->arr, new_cap );
+
+	// in the case that realloc fails, a NULL is returned.
+	// Hence, we will keep the original array in case the
+	// realloc fails.
+	if ( new_arr != NULL ) {
+		v->arr = new_arr;
+		v->capacity = new_cap;
+	}
+}
+
 size_t
 vector_capacity
 ( struct vector * v ) {

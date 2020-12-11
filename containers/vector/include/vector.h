@@ -50,6 +50,18 @@ size_t
 vector_size
 ( struct vector * v );
 
+// if new_cap is larger than the current capacity, then the capacity
+// of the array will be increased, with newly added storage.
+// Otherwise, the function does nothing. (Ie, this function cannot
+// be used to shrink the array)
+//
+// Additional note: If the memory allocation fails, ie, the allocator
+// can't find a pointer to a block long enough, then this function
+// does nothing.
+void
+vector_reserve
+( struct vector * v, size_t new_cap );
+
 size_t
 vector_capacity
 ( struct vector * v );
