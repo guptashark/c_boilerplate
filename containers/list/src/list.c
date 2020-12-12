@@ -68,3 +68,15 @@ list_back
 	struct node * back = lst->back;
 	return back->prev->val;
 }
+
+bool
+list_empty
+( struct list * lst ) {
+	return ( lst->size == 0 );
+}
+
+size_t
+list_size
+( struct list * lst ) {
+	return lst->size;
+}

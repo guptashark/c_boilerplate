@@ -1,6 +1,8 @@
 #ifndef LIST_H
 #define LIST_H
 
+#include <stdbool.h>
+
 struct node;
 
 struct list {
@@ -28,6 +30,16 @@ list_front
 
 void *
 list_back
+( struct list * lst );
+
+// Capacity
+
+bool
+list_empty
+( struct list * lst );
+
+size_t
+list_size
 ( struct list * lst );
 
 #endif
