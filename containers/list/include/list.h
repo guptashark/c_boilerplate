@@ -67,4 +67,10 @@ void
 list_pop_front
 ( struct list * lst );
 
+// Operations
+
+void
+list_reverse
+( struct list * lst );
+
 #endif

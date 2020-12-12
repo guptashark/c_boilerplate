@@ -182,3 +182,23 @@ list_pop_front
 
 	lst->size--;
 }
+
+void
+list_reverse
+( struct list * lst ) {
+
+	struct node * curr = lst->front;
+	struct node * tmp = NULL;
+
+	while ( curr != NULL ) {
+		tmp = curr->prev;
+		curr->prev = curr->next;
+		curr->next = tmp;
+
+		curr = curr->prev;
+	}
+
+	tmp = lst->front;
+	lst->front = lst->back;
+	lst->back = tmp;
+}
