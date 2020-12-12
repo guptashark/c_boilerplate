@@ -25,4 +25,9 @@ void *
 stack_top
 ( struct stack * s );
 
+// Capacity
+bool
+stack_empty
+( struct stack * s );
+
 #endif

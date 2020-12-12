@@ -18,3 +18,9 @@ stack_top
 ( struct stack * s ) {
 	return vector_back ( s->v_ptr );
 }
+
+bool
+stack_empty
+( struct stack * s ) {
+	return vector_empty ( s->v_ptr );
+}
