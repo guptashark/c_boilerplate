@@ -20,6 +20,16 @@ create_empty_node ( void * val ) {
 	ret->val = val;
 }
 
+// connects the two nodes a and b, so
+// that they are in this order in the list.
+static
+void
+connect_nodes
+( struct node * a, struct node * b ) {
+	a->next = b;
+	b->prev = a;
+}
+
 void
 list_ctor
 ( struct list * lst ) {
@@ -28,8 +38,7 @@ list_ctor
 	struct node * front = create_empty_node ( NULL );
 	struct node * back = create_empty_node ( NULL );
 
-	front->next = back;
-	back->prev = front;
+	connect_nodes ( front, back );
 
 	lst->front = front;
 	lst->back = back;
@@ -102,8 +111,8 @@ list_clear
 
 	// don't need to free to_del, since we're not deleting the
 	// back_dummy.
-	front_dummy->next = back_dummy;
-	back_dummy->prev = front_dummy;
+
+	connect_nodes ( front_dummy, back_dummy );
 
 	lst->size = 0;
 }
@@ -116,11 +125,8 @@ list_push_back
 	struct node * back_dummy = lst->back;
 	struct node * old_back = back_dummy->prev;
 
-	old_back->next = new_back;
-	new_back->prev = old_back;
-
-	new_back->next = back_dummy;
-	back_dummy->prev = new_back;
+	connect_nodes ( old_back, new_back );
+	connect_nodes ( new_back, back_dummy );
 
 	lst->size++;
 }
@@ -139,8 +145,7 @@ list_pop_back
 
 	free ( curr_back );
 
-	new_back->next = back_dummy;
-	back_dummy->prev = new_back;
+	connect_nodes ( new_back, back_dummy );
 
 	lst->size--;
 }
@@ -153,11 +158,8 @@ list_push_front
 	struct node * front_dummy = lst->front;
 	struct node * old_front = front_dummy->next;
 
-	old_front->prev = new_front;
-	new_front->next = old_front;
-
-	new_front->prev = front_dummy;
-	front_dummy->next = new_front;
+	connect_nodes ( front_dummy, new_front );
+	connect_nodes ( new_front, old_front );
 
 	lst->size++;
 }
@@ -176,8 +178,7 @@ list_pop_front
 
 	free ( curr_front );
 
-	new_front->prev = front_dummy;
-	front_dummy->next = new_front;
+	connect_nodes ( front_dummy, new_front );
 
 	lst->size--;
 }
