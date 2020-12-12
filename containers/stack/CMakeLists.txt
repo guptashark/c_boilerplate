@@ -11,7 +11,7 @@ target_sources ( ${this_project}
 
 target_include_directories ( ${this_project}
 	PUBLIC include
-	PUBLIC ../vector/include
+	PUBLIC ${CONTAINERS_DIR}/vector/include
 )
 
 target_link_libraries ( ${this_project}

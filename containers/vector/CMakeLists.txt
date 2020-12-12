@@ -15,8 +15,6 @@ target_include_directories ( ${this_project}
 
 # Testing #####################################################################
 
-enable_testing()
-
 add_executable ( test_init tests/test_init.c )
 target_include_directories ( test_init PUBLIC include )
 target_link_libraries ( test_init ${this_project} )
