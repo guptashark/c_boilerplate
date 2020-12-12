@@ -24,3 +24,8 @@ add_executable ( test_stack_init tests/test_stack_init.c )
 target_include_directories ( test_stack_init PUBLIC include )
 target_link_libraries ( test_stack_init ${this_project} )
 add_test (test_stack_init test_stack_init )
+
+add_executable ( test_stack_comprehensive tests/test_stack_comprehensive.c )
+target_include_directories ( test_stack_comprehensive PUBLIC include )
+target_link_libraries ( test_stack_comprehensive ${this_project} )
+add_test (test_stack_comprehensive test_stack_comprehensive )
