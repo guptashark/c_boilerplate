@@ -80,3 +80,20 @@ list_size
 ( struct list * lst ) {
 	return lst->size;
 }
+
+void
+list_push_back
+( struct list * lst, void * val ) {
+
+	struct node * new_back = create_empty_node ( val );
+	struct node * back_dummy = lst->back;
+	struct node * old_back = back_dummy->prev;
+
+	old_back->next = new_back;
+	new_back->prev = old_back;
+
+	new_back->next = back_dummy;
+	back_dummy->prev = new_back;
+
+	lst->size++;
+}

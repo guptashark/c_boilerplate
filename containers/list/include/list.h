@@ -42,4 +42,10 @@ size_t
 list_size
 ( struct list * lst );
 
+// Modifiers
+
+void
+list_push_back
+( struct list * lst, void * val );
+
 #endif
