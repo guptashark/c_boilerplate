@@ -20,4 +20,9 @@ void
 stack_dtor
 ( struct stack * s );
 
+// Element access
+void *
+stack_top
+( struct stack * s );
+
 #endif
