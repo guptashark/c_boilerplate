@@ -97,3 +97,20 @@ list_push_back
 
 	lst->size++;
 }
+
+void
+list_push_front
+( struct list * lst, void * val ) {
+
+	struct node * new_front = create_empty_node ( val );
+	struct node * front_dummy = lst->front;
+	struct node * old_front = front_dummy->next;
+
+	old_front->prev = new_front;
+	new_front->next = old_front;
+
+	new_front->prev = front_dummy;
+	front_dummy->next = new_front;
+
+	lst->size++;
+}

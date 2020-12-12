@@ -48,4 +48,8 @@ void
 list_push_back
 ( struct list * lst, void * val );
 
+void
+list_push_front
+( struct list * lst, void * val );
+
 #endif
