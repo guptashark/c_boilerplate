@@ -52,3 +52,19 @@ list_dtor
 	// nodes except for the last one
 	free ( to_del );
 }
+
+void *
+list_front
+( struct list * lst ) {
+
+	struct node * front = lst->front;
+	return front->next->val;
+}
+
+void *
+list_back
+( struct list * lst ) {
+
+	struct node * back = lst->back;
+	return back->prev->val;
+}
