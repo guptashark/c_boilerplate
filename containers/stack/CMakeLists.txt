@@ -17,3 +17,10 @@ target_include_directories ( ${this_project}
 target_link_libraries ( ${this_project}
 	PRIVATE vector
 )
+
+# Testing #####################################################################
+
+add_executable ( test_stack_init tests/test_stack_init.c )
+target_include_directories ( test_stack_init PUBLIC include )
+target_link_libraries ( test_stack_init ${this_project} )
+add_test (test_stack_init test_stack_init )
