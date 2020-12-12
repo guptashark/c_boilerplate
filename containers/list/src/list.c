@@ -82,6 +82,33 @@ list_size
 }
 
 void
+list_clear
+( struct list * lst ) {
+
+	if ( lst->size == 0 ) {
+		return;
+	}
+
+	struct node * front_dummy = lst->front;
+	struct node * back_dummy = lst->back;
+	struct node * to_del = front_dummy->next;
+	struct node * curr = to_del->next;
+
+	while ( curr != NULL ) {
+		free ( to_del );
+		to_del = curr;
+		curr = curr->next;
+	}
+
+	// don't need to free to_del, since we're not deleting the
+	// back_dummy.
+	front_dummy->next = back_dummy;
+	back_dummy->prev = front_dummy;
+
+	lst->size = 0;
+}
+
+void
 list_push_back
 ( struct list * lst, void * val ) {
 

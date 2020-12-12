@@ -44,6 +44,11 @@ list_size
 
 // Modifiers
 
+// in the case that the list is empty, this fn has no effect.
+void
+list_clear
+( struct list * lst );
+
 void
 list_push_back
 ( struct list * lst, void * val );
