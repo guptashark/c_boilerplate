@@ -30,3 +30,9 @@ stack_size
 ( struct stack * s ) {
 	return vector_size ( s->v_ptr );
 }
+
+void
+stack_push
+( struct stack * s, void * val ) {
+	vector_push_back ( s->v_ptr, val );
+}

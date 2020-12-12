@@ -34,4 +34,9 @@ size_t
 stack_size
 ( struct stack * s );
 
+// Modifiers
+void
+stack_push
+( struct stack * s, void * val );
+
 #endif
