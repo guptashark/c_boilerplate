@@ -39,6 +39,7 @@ void
 stack_push
 ( struct stack * s, void * val );
 
+// In the case that the stack is empty, has no effect.
 void
 stack_pop
 ( struct stack * s );

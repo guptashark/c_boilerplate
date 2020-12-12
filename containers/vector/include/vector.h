@@ -86,6 +86,7 @@ void
 vector_push_back
 ( struct vector * v, void * obj );
 
+// If the vector is empty, then the pop_back will not have any effect.
 void
 vector_pop_back
 (struct vector * v );
