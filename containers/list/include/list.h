@@ -57,4 +57,9 @@ void
 list_push_front
 ( struct list * lst, void * val );
 
+// in the case that the list is empty, this fn has no effect.
+void
+list_pop_front
+( struct list * lst );
+
 #endif

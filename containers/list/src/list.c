@@ -134,3 +134,23 @@ list_push_front
 
 	lst->size++;
 }
+
+void
+list_pop_front
+( struct list * lst ) {
+
+	if ( lst->size == 0 ) {
+		return;
+	}
+
+	struct node * front_dummy = lst->front;
+	struct node * curr_front = front_dummy->next;
+	struct node * new_front = curr_front->next;
+
+	free ( curr_front );
+
+	new_front->prev = front_dummy;
+	front_dummy->next = new_front;
+
+	lst->size--;
+}
