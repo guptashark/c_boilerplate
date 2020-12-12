@@ -48,6 +48,11 @@ void
 list_push_back
 ( struct list * lst, void * val );
 
+// in the case that the list is empty, this fn has no effect.
+void
+list_pop_back
+( struct list * lst );
+
 void
 list_push_front
 ( struct list * lst, void * val );

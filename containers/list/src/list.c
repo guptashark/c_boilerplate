@@ -99,6 +99,26 @@ list_push_back
 }
 
 void
+list_pop_back
+( struct list * lst ) {
+
+	if ( lst->size == 0 ) {
+		return;
+	}
+
+	struct node * back_dummy = lst->back;
+	struct node * curr_back = back_dummy->prev;
+	struct node * new_back = curr_back->prev;
+
+	free ( curr_back );
+
+	new_back->next = back_dummy;
+	back_dummy->prev = new_back;
+
+	lst->size--;
+}
+
+void
 list_push_front
 ( struct list * lst, void * val ) {
 
