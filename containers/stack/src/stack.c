@@ -24,3 +24,9 @@ stack_empty
 ( struct stack * s ) {
 	return vector_empty ( s->v_ptr );
 }
+
+size_t
+stack_size
+( struct stack * s ) {
+	return vector_size ( s->v_ptr );
+}

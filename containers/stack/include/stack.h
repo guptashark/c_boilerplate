@@ -30,4 +30,8 @@ bool
 stack_empty
 ( struct stack * s );
 
+size_t
+stack_size
+( struct stack * s );
+
 #endif
