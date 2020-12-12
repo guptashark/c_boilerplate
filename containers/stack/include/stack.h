@@ -39,4 +39,8 @@ void
 stack_push
 ( struct stack * s, void * val );
 
+void
+stack_pop
+( struct stack * s );
+
 #endif

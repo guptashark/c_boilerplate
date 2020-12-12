@@ -36,3 +36,9 @@ stack_push
 ( struct stack * s, void * val ) {
 	vector_push_back ( s->v_ptr, val );
 }
+
+void
+stack_pop
+( struct stack * s ) {
+	vector_pop_back ( s->v_ptr );
+}
