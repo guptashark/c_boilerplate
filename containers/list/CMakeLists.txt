@@ -24,3 +24,8 @@ add_executable ( test_list_reverse tests/test_list_reverse.c )
 target_include_directories ( test_list_reverse PUBLIC include )
 target_link_libraries ( test_list_reverse ${this_project} )
 add_test (test_list_reverse test_list_reverse )
+
+add_executable ( test_list_remove tests/test_list_remove.c )
+target_include_directories ( test_list_remove PUBLIC include )
+target_link_libraries ( test_list_remove ${this_project} )
+add_test (test_list_remove test_list_remove )
