@@ -185,11 +185,11 @@ list_pop_front
 
 void
 list_remove
-( struct list * lst, void * val ) {
-
-	// for now, lets just do an int compare.
-	int * filter = val;
-
+(
+	struct list * lst,
+	void * val,
+	int ( * cmp_fn)(void *, void *)
+) {
 	if ( lst->size == 0 ) {
 		return;
 	}
@@ -199,16 +199,15 @@ list_remove
 
 	while ( curr != lst->back ) {
 
-		int * curr_val = curr->val;
-
-		if ( ( * curr_val ) == ( * filter ) ) {
+		if ( cmp_fn ( val, curr->val ) == 0 ) {
 
 			struct node * curr_prev = curr->prev;
-			struct node * curr_next = curr->next;
-
+			struct node * to_del = curr;
 			curr = curr->next;
 
-			connect_nodes ( curr_prev, curr_next );
+			free ( to_del );
+
+			connect_nodes ( curr_prev, curr );
 			lst->size--;
 		} else {
 			curr = curr->next;
