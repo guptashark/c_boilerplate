@@ -184,6 +184,39 @@ list_pop_front
 }
 
 void
+list_remove
+( struct list * lst, void * val ) {
+
+	// for now, lets just do an int compare.
+	int * filter = val;
+
+	if ( lst->size == 0 ) {
+		return;
+	}
+
+	struct node * front_dummy = lst->front;
+	struct node * curr = front_dummy->next;
+
+	while ( curr != lst->back ) {
+
+		int * curr_val = curr->val;
+
+		if ( ( * curr_val ) == ( * filter ) ) {
+
+			struct node * curr_prev = curr->prev;
+			struct node * curr_next = curr->next;
+
+			curr = curr->next;
+
+			connect_nodes ( curr_prev, curr_next );
+			lst->size--;
+		} else {
+			curr = curr->next;
+		}
+	}
+}
+
+void
 list_reverse
 ( struct list * lst ) {
 

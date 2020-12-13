@@ -69,6 +69,11 @@ list_pop_front
 
 // Operations
 
+// removes all occurrences of val in the list.
+void
+list_remove
+( struct list * lst, void * val );
+
 void
 list_reverse
 ( struct list * lst );
