@@ -77,6 +77,11 @@ list_remove(
 	int ( * cmp_fn)(void *, void *));
 
 void
+list_remove_if(
+	struct list * lst,
+	bool ( * unary_predicate )( void * ));
+
+void
 list_reverse
 ( struct list * lst );
 

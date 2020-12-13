@@ -216,6 +216,37 @@ list_remove
 }
 
 void
+list_remove_if
+(
+	struct list * lst,
+	bool ( * unary_predicate)(void *)
+) {
+	if ( lst->size == 0 ) {
+		return;
+	}
+
+	struct node * front_dummy = lst->front;
+	struct node * curr = front_dummy->next;
+
+	while ( curr != lst->back ) {
+
+		if ( unary_predicate ( curr->val ) ) {
+
+			struct node * curr_prev = curr->prev;
+			struct node * to_del = curr;
+			curr = curr->next;
+
+			free ( to_del );
+
+			connect_nodes ( curr_prev, curr );
+			lst->size--;
+		} else {
+			curr = curr->next;
+		}
+	}
+}
+
+void
 list_reverse
 ( struct list * lst ) {
 
