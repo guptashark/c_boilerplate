@@ -36,4 +36,8 @@ bool
 queue_empty
 ( struct queue * q );
 
+size_t
+queue_size
+( struct queue * q );
+
 #endif

@@ -30,3 +30,9 @@ queue_empty
 ( struct queue * q ) {
 	return list_empty ( q->lst_ptr );
 }
+
+size_t
+queue_size
+( struct queue * q ) {
+	return list_size ( q->lst_ptr );
+}
