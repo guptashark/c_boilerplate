@@ -18,3 +18,9 @@ queue_front
 ( struct queue * q ) {
 	return list_front ( q->lst_ptr );
 }
+
+void *
+queue_back
+( struct queue * q ) {
+	return list_back ( q->lst_ptr );
+}

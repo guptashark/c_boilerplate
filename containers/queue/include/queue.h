@@ -26,4 +26,8 @@ void *
 queue_front
 ( struct queue * q );
 
+void *
+queue_back
+( struct queue * q );
+
 #endif
