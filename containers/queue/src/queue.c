@@ -12,3 +12,9 @@ queue_dtor
 ( struct queue * q ) {
 	list_dtor ( q->lst_ptr );
 }
+
+void *
+queue_front
+( struct queue * q ) {
+	return list_front ( q->lst_ptr );
+}

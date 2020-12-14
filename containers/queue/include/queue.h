@@ -20,4 +20,10 @@ void
 queue_dtor
 ( struct queue * q );
 
+// Element access
+
+void *
+queue_front
+( struct queue * q );
+
 #endif
