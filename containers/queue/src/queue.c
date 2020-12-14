@@ -24,3 +24,9 @@ queue_back
 ( struct queue * q ) {
 	return list_back ( q->lst_ptr );
 }
+
+bool
+queue_empty
+( struct queue * q ) {
+	return list_empty ( q->lst_ptr );
+}

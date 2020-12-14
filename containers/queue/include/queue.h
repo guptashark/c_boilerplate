@@ -30,4 +30,10 @@ void *
 queue_back
 ( struct queue * q );
 
+// Capacity
+
+bool
+queue_empty
+( struct queue * q );
+
 #endif
