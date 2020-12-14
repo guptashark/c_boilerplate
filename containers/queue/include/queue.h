@@ -40,4 +40,10 @@ size_t
 queue_size
 ( struct queue * q );
 
+// Modifiers
+
+void
+queue_push
+( struct queue * q, void * val );
+
 #endif

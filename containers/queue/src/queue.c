@@ -36,3 +36,9 @@ queue_size
 ( struct queue * q ) {
 	return list_size ( q->lst_ptr );
 }
+
+void
+queue_push
+( struct queue * q, void * val ) {
+	return list_push_back ( q->lst_ptr, val );
+}
