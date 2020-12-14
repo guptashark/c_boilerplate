@@ -46,4 +46,8 @@ void
 queue_push
 ( struct queue * q, void * val );
 
+void
+queue_pop
+( struct queue * q );
+
 #endif

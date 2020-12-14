@@ -42,3 +42,9 @@ queue_push
 ( struct queue * q, void * val ) {
 	return list_push_back ( q->lst_ptr, val );
 }
+
+void
+queue_pop
+( struct queue * q ) {
+	return list_pop_front ( q->lst_ptr );
+}
