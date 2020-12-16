@@ -58,3 +58,9 @@ array_data
 
 	return arr->data;
 }
+
+bool
+array_empty
+( struct array * arr ) {
+	return arr->size == 0;
+}

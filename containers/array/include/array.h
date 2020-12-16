@@ -2,6 +2,7 @@
 #define ARRAY_H
 
 #include <stddef.h>
+#include <stdbool.h>
 
 struct array {
 	size_t size;
@@ -41,6 +42,12 @@ array_back
 // (empty as in initialized as a size 0 )
 void **
 array_data
+( struct array * arr );
+
+// Capacity
+
+bool
+array_empty
 ( struct array * arr );
 
 #endif
