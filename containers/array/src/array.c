@@ -15,3 +15,14 @@ array_dtor
 ( struct array * arr ) {
 	free ( arr->data );
 }
+
+void *
+array_front
+( struct array * arr ) {
+
+	if ( arr->size == 0 ) {
+		return NULL;
+	}
+
+	return arr->data[0];
+}
