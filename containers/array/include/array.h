@@ -50,4 +50,8 @@ bool
 array_empty
 ( struct array * arr );
 
+size_t
+array_size
+( struct array * arr );
+
 #endif

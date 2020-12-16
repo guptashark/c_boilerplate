@@ -64,3 +64,9 @@ array_empty
 ( struct array * arr ) {
 	return arr->size == 0;
 }
+
+size_t
+array_size
+( struct array * arr ) {
+	return arr->size;
+}
