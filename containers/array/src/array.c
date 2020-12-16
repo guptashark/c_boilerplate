@@ -47,3 +47,14 @@ array_back
 
 	return arr->data[arr->size - 1];
 }
+
+void **
+array_data
+( struct array * arr ) {
+
+	if ( arr->size == 0 ) {
+		return NULL;
+	}
+
+	return arr->data;
+}

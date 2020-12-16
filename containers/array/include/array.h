@@ -37,4 +37,10 @@ void *
 array_back
 ( struct array * arr );
 
+// In the case that the array is empty, return null.
+// (empty as in initialized as a size 0 )
+void **
+array_data
+( struct array * arr );
+
 #endif
