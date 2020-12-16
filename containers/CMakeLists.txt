@@ -8,6 +8,7 @@ set ( CONTAINERS_DIR ${CMAKE_CURRENT_LIST_DIR} )
 enable_testing()
 
 add_subdirectory ( vector )
+add_subdirectory ( array )
 add_subdirectory ( stack )
 add_subdirectory ( queue )
 add_subdirectory ( list )
