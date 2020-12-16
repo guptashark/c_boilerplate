@@ -26,3 +26,14 @@ array_front
 
 	return arr->data[0];
 }
+
+void *
+array_back
+( struct array * arr ) {
+	
+	if ( arr->size == 0 ) {
+		return NULL;
+	}
+
+	return arr->data[arr->size - 1];
+}
