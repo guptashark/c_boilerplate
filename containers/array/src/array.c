@@ -16,6 +16,16 @@ array_dtor
 	free ( arr->data );
 }
 
+void **
+array_at
+( struct array * arr, size_t pos ) {
+	if ( pos >= arr->size ) {
+		return NULL;
+	}
+
+	return & arr->data[pos];
+}
+
 void *
 array_front
 ( struct array * arr ) {

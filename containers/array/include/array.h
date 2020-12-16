@@ -18,6 +18,13 @@ array_dtor
 
 // Element Access
 
+// Returns a pointer to the requested item in the array.
+// In the case that pos is out of bounds, retuns null.
+// (ie, pos >= size of the array )
+void **
+array_at
+( struct array * arr, size_t pos );
+
 // In the case that the array is empty, return null.
 // (empty as in initialized as a size 0 )
 void *
