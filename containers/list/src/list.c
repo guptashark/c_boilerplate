@@ -18,6 +18,8 @@ create_empty_node ( void * val ) {
 	ret->next = NULL;
 	ret->prev = NULL;
 	ret->val = val;
+
+	return ret;
 }
 
 // connects the two nodes a and b, so

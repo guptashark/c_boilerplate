@@ -4,8 +4,6 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-struct node;
-
 struct list {
 
 	size_t size;
