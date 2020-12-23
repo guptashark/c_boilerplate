@@ -70,3 +70,11 @@ array_size
 ( struct array * arr ) {
 	return arr->size;
 }
+
+void
+array_fill
+( struct array * arr, void * val ) {
+	for ( size_t i = 0; i < arr->size; i++ ) {
+		arr->data[i] = val;
+	}
+}

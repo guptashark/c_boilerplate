@@ -54,4 +54,11 @@ size_t
 array_size
 ( struct array * arr );
 
+// Operations
+
+// Assign val to all the elements in the array.
+void
+array_fill
+( struct array * arr, void * val );
+
 #endif
