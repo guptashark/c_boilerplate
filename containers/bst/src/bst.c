@@ -39,6 +39,12 @@ bst_empty
 	return b->size == 0;
 }
 
+size_t
+bst_size
+( struct bst * b ) {
+	return b->size;
+}
+
 // Will insert the key and value into the bst. In the case that
 // the key already exists, the existing value will be overwritten
 // with the new one.

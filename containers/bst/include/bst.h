@@ -30,6 +30,10 @@ bool
 bst_empty
 ( struct bst * b );
 
+size_t
+bst_size
+( struct bst * b );
+
 // Modifiers
 
 void
