@@ -33,6 +33,12 @@ bst_ctor
 	b->less = less;
 }
 
+bool
+bst_empty
+( struct bst * b ) {
+	return b->size == 0;
+}
+
 // Will insert the key and value into the bst. In the case that
 // the key already exists, the existing value will be overwritten
 // with the new one.

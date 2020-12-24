@@ -24,6 +24,14 @@ void
 bst_ctor
 ( struct bst * b, bool ( *less )( void *, void *));
 
+// Capacity
+
+bool
+bst_empty
+( struct bst * b );
+
+// Modifiers
+
 void
 bst_insert
 ( struct bst * b, void * key, void * val );
