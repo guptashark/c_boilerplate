@@ -28,4 +28,12 @@ void
 bst_insert
 ( struct bst * b, void * key, void * val );
 
+// Lookup
+
+// Return the number of number of elements matching the given key.
+// Since the bst has unique keys, this fn returns 0 or 1.
+size_t
+bst_count
+( struct bst * b, void * key );
+
 #endif

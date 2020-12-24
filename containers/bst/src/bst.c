@@ -70,3 +70,23 @@ bst_insert
 
 	b->size++;
 }
+
+size_t
+bst_count
+( struct bst * b, void * key ) {
+
+	struct bst_node * curr = b->root;
+
+	while ( curr != NULL ) {
+
+		if ( b->less ( key, curr->key ) ) {
+			curr = curr->left;
+		} else if ( b->less ( curr->key, key ) ) {
+			curr = curr->right;
+		} else {
+			return 1;
+		}
+	}
+
+	return 0;
+}
