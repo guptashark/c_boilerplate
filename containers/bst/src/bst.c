@@ -12,9 +12,61 @@ struct bst_node {
 	void * val;
 };
 
+static
+struct bst_node *
+create_empty_node ( void * key, void * val ) {
+	struct bst_node * ret = malloc ( sizeof ( struct bst_node ) );
+	ret->left = NULL;
+	ret->right = NULL;
+
+	ret->key = key;
+	ret->val = val;
+
+	return ret;
+}
+
 void
 bst_ctor
-( struct bst * b ) {
+( struct bst * b, bool ( *less )( void *, void *) ) {
 	b->size = 0;
 	b->root = NULL;
+	b->less = less;
+}
+
+// Will insert the key and value into the bst. In the case that
+// the key already exists, the existing value will be overwritten
+// with the new one.
+//
+// Note: This fn has a markedly different signature from the one
+// in the C++ standard for maps.
+void
+bst_insert
+( struct bst * b, void * key, void * val ) {
+
+	struct bst_node * new_node = create_empty_node ( key, val );
+
+	struct bst_node * par = NULL;
+	struct bst_node * curr = b->root;
+
+	while ( curr != NULL ) {
+		par = curr;
+		if ( b->less ( key, curr->key ) ) {
+			curr = curr->left;
+		} else {
+			curr = curr->right;
+		}
+	}
+
+	// tree is empty, so set the root.
+	if ( par == NULL )  {
+		b->root = new_node;
+	} else {
+		if ( b->less ( par->key, key ) ) {
+			par->right = new_node;
+		} else {
+			par->left = new_node;
+		}
+	}
+
+	b->size++;
 }
