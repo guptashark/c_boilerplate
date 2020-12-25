@@ -62,6 +62,13 @@ bst_size
 	return b->size;
 }
 
+void
+bst_clear
+( struct bst * b ) {
+	bst_dtor_helper ( b->root );
+	b->size = 0;
+}
+
 // Will insert the key and value into the bst. In the case that
 // the key already exists, the existing value will be overwritten
 // with the new one.

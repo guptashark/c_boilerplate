@@ -40,6 +40,13 @@ bst_size
 
 // Modifiers
 
+// Will clear out all the nodes, and size will be set to zero. However,
+// will retain the less than function. (Ie, ctor doesn't need to be
+// called again).
+void
+bst_clear
+( struct bst * b );
+
 void
 bst_insert
 ( struct bst * b, void * key, void * val );
