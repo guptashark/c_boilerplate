@@ -41,6 +41,8 @@ void test_bst_insert(void) {
 
 	bst_insert ( & b, & arr[2], NULL );
 	assert ( b.size == 3 );
+
+	bst_dtor ( & b );
 }
 
 void test_bst_count(void) {
@@ -70,4 +72,6 @@ void test_bst_count(void) {
 		int key = i;
 		assert ( bst_count ( & b, & key ) == expected_counts[i] );
 	}
+
+	bst_dtor ( & b );
 }
