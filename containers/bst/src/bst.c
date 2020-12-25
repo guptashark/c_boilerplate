@@ -33,6 +33,23 @@ bst_ctor
 	b->less = less;
 }
 
+static
+void
+bst_dtor_helper
+( struct bst_node * bn ) {
+	if ( bn != NULL ) {
+		bst_dtor_helper ( bn->left);
+		bst_dtor_helper ( bn->right);
+		free(bn);
+	}
+}
+
+void
+bst_dtor
+( struct bst * b ) {
+	bst_dtor_helper ( b->root );
+}
+
 bool
 bst_empty
 ( struct bst * b ) {

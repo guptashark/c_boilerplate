@@ -24,6 +24,10 @@ void
 bst_ctor
 ( struct bst * b, bool ( *less )( void *, void *));
 
+void
+bst_dtor
+( struct bst * b );
+
 // Capacity
 
 bool
