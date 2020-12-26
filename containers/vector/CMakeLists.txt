@@ -7,6 +7,7 @@ add_library ( ${this_project} )
 
 target_sources  (${this_project}
 	PRIVATE src/vector.c
+	PRIVATE src/vector_iter.c
 )
 
 target_include_directories ( ${this_project}

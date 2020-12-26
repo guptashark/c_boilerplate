@@ -1,6 +1,8 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+#include "vector_iter.h"
+
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
@@ -38,6 +40,16 @@ vector_front
 // if the vector has size 0, will return NULL.
 void *
 vector_back
+( struct vector * v );
+
+// Iterators
+
+struct vector_iter
+vector_begin
+( struct vector * v );
+
+struct vector_iter
+vector_end
 ( struct vector * v );
 
 // Capacity fns.

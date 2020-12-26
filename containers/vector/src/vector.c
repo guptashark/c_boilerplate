@@ -1,4 +1,5 @@
 #include "vector.h"
+#include "vector_iter.h"
 
 #include <stdlib.h>
 
@@ -48,6 +49,22 @@ vector_back
 	}
 
 	return v->arr[v->size - 1];
+}
+
+struct vector_iter
+vector_begin
+( struct vector * v ) {
+	struct vector_iter ret;
+	ret.p = v->arr;
+	return ret;
+}
+
+struct vector_iter
+vector_end
+( struct vector * v ) {
+	struct vector_iter ret;
+	ret.p = & v->arr[v->size];
+	return ret;
 }
 
 bool
@@ -116,7 +133,9 @@ void
 vector_push_back
 ( struct vector * v, void * obj ) {
 
-	if ( v->size == v->capacity ) {
+	// Need to always have the capacity bigger than
+	// the size so that the vector_end iterator works.
+	if ( ( v->size + 1 ) == v->capacity ) {
 		v->capacity = v->capacity * 2;
 	}
 
