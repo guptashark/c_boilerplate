@@ -30,3 +30,8 @@ add_executable ( test_at tests/test_at.c )
 target_include_directories ( test_at PUBLIC include )
 target_link_libraries ( test_at ${this_project} )
 add_test ( test_at test_at )
+
+add_executable ( test_vector_iter_comprehensive tests/test_vector_iter_comprehensive.c )
+target_include_directories ( test_vector_iter_comprehensive PUBLIC include )
+target_link_libraries ( test_vector_iter_comprehensive ${this_project} )
+add_test ( test_vector_iter_comprehensive test_vector_iter_comprehensive )

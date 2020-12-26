@@ -15,5 +15,5 @@ vector_iter_deref
 bool
 vector_iter_neq
 ( struct vector_iter * it, struct vector_iter * end ) {
-       return it->p == end->p;
+       return it->p != end->p;
 }
