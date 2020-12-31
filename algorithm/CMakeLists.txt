@@ -30,3 +30,12 @@ target_include_directories ( test_algo_for_each
 
 target_link_libraries ( test_algo_for_each ${this_project} )
 add_test ( test_algo_for_each test_algo_for_each )
+
+add_executable ( test_algo_all_of tests/test_algo_all_of.c )
+target_include_directories ( test_algo_all_of
+	PUBLIC include
+	PUBLIC ${C_BOILERPLATE}/containers/vector/include
+)
+
+target_link_libraries ( test_algo_all_of ${this_project} )
+add_test ( test_algo_all_of test_algo_all_of )
