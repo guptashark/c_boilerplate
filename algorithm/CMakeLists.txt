@@ -51,3 +51,13 @@ target_include_directories ( test_algo_any_of
 
 target_link_libraries ( test_algo_any_of ${this_project} )
 add_test ( test_algo_any_of test_algo_any_of )
+
+# Testing none_of
+add_executable ( test_algo_none_of tests/test_algo_none_of.c )
+target_include_directories ( test_algo_none_of
+	PUBLIC include
+	PUBLIC ${C_BOILERPLATE}/containers/vector/include
+)
+
+target_link_libraries ( test_algo_none_of ${this_project} )
+add_test ( test_algo_none_of test_algo_none_of )
