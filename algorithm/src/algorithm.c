@@ -36,6 +36,24 @@ algo_any_of(
 	return false;
 }
 
+bool
+algo_none_of(
+	struct vector_iter * it_first,
+	struct vector_iter * it_last,
+	bool (* unary_predicate)(void *)
+) {
+	while ( vector_iter_neq ( it_first, it_last) ) {
+		void * val = vector_iter_deref ( it_first );
+		if ( unary_predicate ( val ) == true ) {
+			return false;
+		}
+
+		vector_iter_inc ( it_first );
+	}
+
+	return true;
+}
+
 void
 algo_for_each(
 	struct vector_iter * it_first,

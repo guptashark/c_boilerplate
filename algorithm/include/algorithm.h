@@ -23,6 +23,12 @@ algo_any_of(
 	struct vector_iter * it_last,
 	bool (* unary_predicate)(void *) );
 
+bool
+algo_none_of(
+	struct vector_iter * it_first,
+	struct vector_iter * it_last,
+	bool (* unary_predicate)(void *) );
+
 // for these fns to work, we need to pass a vtable that has all the
 // different functions to use on the given iterators.
 //
